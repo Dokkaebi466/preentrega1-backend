@@ -61,8 +61,11 @@ socketServer.on("connection", (socket) => {
     try {
       const result = await productManager.deleteProductById(id);
       const allProducts = await productManager.getProducts();
-      console.log(allProducts);
-      result && socketServer.emit("updateProducts", allProducts);
+      console.log(result);
+      result.success && socketServer.emit("updateProducts", allProducts);
+      if (!result.success) {
+        console.log ("no se elimino");
+      }
     } catch (err) {
       console.log(err);
     }

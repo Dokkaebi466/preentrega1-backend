@@ -25,6 +25,7 @@ export class ProductManager {
       this.products = data?.length > 0 ? data : [];
     } catch (error) {
       console.log(error);
+      return false;
     }
 
     let codeExists = this.products.some((dato) => dato.code == code);
@@ -46,7 +47,9 @@ export class ProductManager {
         await utils.writeFile(this.path, this.products);
       } catch (error) {
         console.log(error);
+        return false;
       }
+      return true;
     }
 
     // if () {
@@ -111,9 +114,9 @@ export class ProductManager {
         let product = this.products[productIndex];
         this.products.splice(productIndex, 1);
         await utils.writeFile(this.path, products);
-        return { mensaje: "producto eliminado", producto: product };
+        return { mensaje: "producto eliminado", producto: product, success: true };
       } else {
-        return { mensaje: "no existe el producto solicitado" };
+        return { mensaje: "no existe el producto solicitado", success: false };
       }
     } catch (error) {
       console.log(error);
