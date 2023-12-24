@@ -46,7 +46,7 @@ socketServer.on("connection", (socket) => {
         price,
         thumbnail,
         code,
-        stock
+        stock,
       );
       const allProducts = await productManager.getProducts();
       console.log(allProducts);
@@ -64,6 +64,7 @@ socketServer.on("connection", (socket) => {
       console.log(result);
       result.success && socketServer.emit("updateProducts", allProducts);
       if (!result.success) {
+        socketServer.emit("error", result);
         console.log ("no se elimino");
       }
     } catch (err) {

@@ -19,16 +19,16 @@ addProductBtn.addEventListener("click", (e) => {
     price: price.value,
     thumbnail: thumbnail.value,
     code: code.value,
-    stock,
+    stock: stock.value,
   };
 
   socket.emit("addProduct", product);
-  title: title.value = "";
-  description: description.value = "";
-  price: price.value = "";
-  thumbnail: thumbnail.value = "";
-  code: code.value = "";
-  stock: stock.value = "";
+  title.value = "";
+  description.value = "";
+  price.value = "";
+  thumbnail.value = "";
+  code.value = "";
+  stock.value = "";
 });
 
 deleteProductBtn.addEventListener("click", (e) => {
