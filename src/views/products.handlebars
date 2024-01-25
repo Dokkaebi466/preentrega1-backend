@@ -1,18 +1,17 @@
-<div class="productList">
-  {{#each products}}
-    <div class="productCard">
-      <div class="cardProduct__image">
-        <img src="{{this.thumbnail}}" alt="{{this.name}}" />
-      </div>
-      <div class="cardProduct__info">
-        <h3>{{this.name}}</h3>
-        <p>{{this.description}}</p>
-        <p>{{this.price}}</p>
-        <p>{{this.stock}}</p>
-        <p>{{this.code}}</p>
-        <p>{{this.id}}</p>
-      </div>
-
-    </div>
-  {{/each}}
+<div>
+    <ul>
+    {{#each products}}
+        <li>
+            <h2>{{this.title}}</h2>
+            <p>{{this.description}}</p>
+            <p><strong>${{this.price}}</strong></p>
+        </li>
+    {{/each}}
+    </ul>
+    {{#if hasPrevPage}}
+        <a href="/products?page={{prevPage}}"><button>Anterior</button></a>
+    {{/if}}
+    {{#if hasNextPage}}
+        <a href="/products?page={{nextPage}}"><button>Siguiente</button></a>
+    {{/if}}
 </div>
